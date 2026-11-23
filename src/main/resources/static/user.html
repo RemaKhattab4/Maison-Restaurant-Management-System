@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAISON | Restaurant</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+
+<header class="header">
+    <a href="#" class="logo">MAISON<span>.</span></a>
+
+    <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#menu">Our Menu</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button id="my-orders-btn" type="button">My Orders</button>
+    </nav>
+
+    <a href="#menu" class="header-btn">Order Now</a>
+
+    <button class="cart-icon-btn" id="open-cart-btn" type="button">
+        🛒
+        <span id="cart-count">0</span>
+    </button>
+</header>
+
+<main>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="subtitle">WELCOME TO MAISON</p>
+            <h1>Good Food.<br>Good Mood.</h1>
+            <p class="hero-description">
+                Discover delicious meals prepared with fresh ingredients
+                and served with love.
+            </p>
+            <a href="#menu" class="main-btn">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <section class="menu-section" id="menu">
+        <div class="section-heading">
+            <p class="subtitle">OUR SELECTION</p>
+            <h2>Discover Our Menu</h2>
+            <p>Fresh ingredients, delicious flavors, unforgettable moments.</p>
+        </div>
+
+        <div id="category-buttons" class="category-buttons">
+            <button class="category-btn active" data-category="All">All</button>
+        </div>
+
+        <div id="menu-products" class="products-grid">
+            <p class="loading-message">Loading our menu...</p>
+        </div>
+
+        <p id="menu-message" class="menu-message"></p>
+    </section>
+
+    <section class="about-section" id="about">
+        <div>
+            <p class="subtitle">ABOUT MAISON</p>
+            <h2>Made With Love,<br>Served With Passion.</h2>
+            <p>
+                At MAISON, we believe every meal should be a special experience.
+                Enjoy delicious food made from carefully selected ingredients.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer id="contact" class="footer">
+    <h2>MAISON<span>.</span></h2>
+    <p>Good food brings people together.</p>
+    <p>© 2026 MAISON Restaurant. All rights reserved.</p>
+</footer>
+
+<!-- Cart Overlay -->
+<div class="cart-overlay" id="cart-overlay"></div>
+
+<!-- Shopping Cart Sidebar -->
+<aside class="cart-sidebar" id="cart-sidebar">
+
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button id="close-cart-btn" class="close-cart-btn" type="button">
+            &times;
+        </button>
+    </div>
+
+    <div id="cart-items" class="cart-items">
+        <p class="empty-cart">Your cart is empty.</p>
+    </div>
+
+    <div class="cart-footer">
+        <div class="cart-total">
+            <span>Total</span>
+            <strong id="cart-total">0.00 JOD</strong>
+        </div>
+
+        <button id="checkout-btn" class="checkout-btn" type="button">
+            Proceed to Checkout
+        </button>
+    </div>
+
+</aside>
+
+<!-- Checkout Overlay -->
+<div class="checkout-overlay" id="checkout-overlay">
+    <div class="checkout-modal">
+
+        <div class="checkout-header">
+            <div>
+                <p class="subtitle">ALMOST THERE</p>
+                <h2>Complete Your Order</h2>
+            </div>
+
+            <button
+                    type="button"
+                    id="close-checkout-btn"
+                    class="close-cart-btn"
+            >
+                &times;
+            </button>
+        </div>
+
+        <form id="checkout-form">
+
+            <div class="form-group">
+                <label for="order-type">Order Type</label>
+                <select id="order-type" required>
+                    <option value="DELIVERY">Delivery</option>
+                    <option value="PICKUP">Pickup</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="delivery-address-group">
+                <label for="delivery-address">Delivery Address</label>
+                <textarea
+                        id="delivery-address"
+                        rows="3"
+                        placeholder="Enter your full delivery address"
+                ></textarea>
+            </div>
+
+            <div class="form-group" id="delivery-governorate-group">
+                <label for="delivery-governorate">Delivery Governorate</label>
+
+                <select id="delivery-governorate">
+                    <option value="">Select your governorate</option>
+                    <option value="Amman">Amman - 1.00 JOD</option>
+                    <option value="Zarqa">Zarqa - 2.00 JOD</option>
+                </select>
+            </div>
+
+            <div class="checkout-summary">
+                <span>Delivery Fee</span>
+                <strong id="checkout-delivery-fee">0.00 JOD</strong>
+            </div>
+
+            <div class="checkout-summary">
+                <span>Order Total</span>
+                <strong id="checkout-total">0.00 JOD</strong>
+            </div>
+
+            <p id="checkout-message" class="checkout-message"></p>
+
+            <button type="submit" id="place-order-btn" class="place-order-btn">
+                Place Order
+            </button>
+
+        </form>
+    </div>
+</div>
+
+<!-- My Orders Modal -->
+<section
+        id="my-orders-section"
+        class="my-orders-overlay"
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="my-orders-title"
+>
+    <div class="my-orders-modal">
+        <div class="my-orders-header">
+            <div>
+                <p class="orders-eyebrow">MAISON CUSTOMER AREA</p>
+                <h2 id="my-orders-title">My Orders</h2>
+                <p class="orders-subtitle">
+                    Your orders, carefully prepared for you.
+                </p>
+            </div>
+
+            <button
+                    id="close-my-orders-btn"
+                    class="close-my-orders-btn"
+                    type="button"
+                    aria-label="Close my orders"
+            >
+                &times;
+            </button>
+        </div>
+
+        <div id="my-orders-list" class="my-orders-list">
+        </div>
+    </div>
+</section>
+
+<script src="user.js"></script>
+</body>
+</html>
